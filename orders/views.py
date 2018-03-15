@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
+from .tasks import order_created
 
 # Create your views here.
 
@@ -13,6 +14,11 @@ def order_create(request):
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
+            # Usunięcie zawartości koszyka na zakupy.
+            cart.clear()
+            # Uruchomienie zadania asynchronicznego.
+            order_created.delay(order.id) # Umieszczenie zamówienia w sesji.
+
     else:
         form = OrderCreateForm()
     return render(request,

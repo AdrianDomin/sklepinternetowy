@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'shop',
     'cart',
     'orders',
-    
+
 
 )
 
@@ -113,3 +113,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 #koszyk
 CART_SESSION_ID ='cart'
+
+#E-mail
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
