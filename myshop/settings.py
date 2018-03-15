@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'shop',
     'cart',
     'orders',
+    'paypal.standard.ipn',
+    'payment',
 
 
 )
@@ -114,5 +116,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 #koszyk
 CART_SESSION_ID ='cart'
 
-#E-mail
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#ustawinia platosci paypal
+PAYPAL_RECEIVER_EMAIL = 'kontopaypalkwiaciarni@mail.com',
+PAYPAL_TEST = True,
+PAYPAL_API_USERNAME = 'kontopaypalkwiaciarni_api1.mail.com',
+PAYPAL_API_PASSWORD = 'SL9DNJPPD73R4QTX',
+PAYPAL_API_SIGNATURE = 'AcbY8FVlqFl1Xfzi1DZoyKKs9UhoAypIi.KTfca9Nt05CFojerXf02su',
