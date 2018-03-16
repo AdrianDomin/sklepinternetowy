@@ -15,20 +15,17 @@ def payment_process(request):
         'business': settings.PAYPAL_RECEIVER_EMAIL,
         'amount': '%.2f' % order.get_total_cost().quantize(
                                                   Decimal('.01')),
+        #order,id - bieżące Zamówienie 
         'item_name': 'Zamówienie {}'.format(order.id),
         'invoice': str(order.id),
         'currency_code': 'PLN',
-        'notify_url': 'http://{}{}'.format(host,
-                                           reverse('paypal-ipn')),
-        'return_url': 'http://{}{}'.format(host,
-                                         reverse('payment:done')),
-        'cancel_return': 'http://{}{}'.format(host,
-                                     reverse('payment:canceled')),
+        'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
+        'return_url': 'http://{}{}'.format(host, reverse('payment:done')),
+        'cancel_return': 'http://{}{}'.format(host, reverse('payment:canceled')),
     }
     form = PayPalPaymentsForm(initial=paypal_dict)
-    return render(request,
-                  'payment/process.html',
-                  {'order': order, 'form':form})
+
+    return render(request, 'payment/process.html', {'order': order, 'form':form})
 
 @csrf_exempt
 def payment_done(request):

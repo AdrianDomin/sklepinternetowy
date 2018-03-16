@@ -108,6 +108,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 #multimedia
 MEDIA_URL = '/media/'
@@ -118,7 +120,7 @@ CART_SESSION_ID ='cart'
 
 
 #ustawinia platosci paypal
-PAYPAL_RECEIVER_EMAIL = 'kontopaypalkwiaciarni@mail.com',
+PAYPAL_RECEIVER_EMAIL = 'adriandominn@gmail.com',
 PAYPAL_TEST = True,
 PAYPAL_API_USERNAME = 'kontopaypalkwiaciarni_api1.mail.com',
 PAYPAL_API_PASSWORD = 'SL9DNJPPD73R4QTX',
