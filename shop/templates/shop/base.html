@@ -1,17 +1,58 @@
 {% load i18n %}
 {% load static %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title %}{% trans "Mój sklep" %}{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 
+
+
 <body>
-  <div id="header">
-    <a href="/" class="logo">{% trans "Mój sklep" %}</a>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Kwiaciarnia</a>
+
+
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.google.pl/maps/place/Kwiaciarnia+R%C3%B3%C5%BCa/@49.8146492,22.2317224,18z/data=!3m1!4b1!4m5!3m4!1s0x0:0xb32f328c404b12!8m2!3d49.8146509!4d22.2328198?dcr=0">Mapa</a>
+        </li>
+      </ul>
+    </div>
   </div>
+</nav>
+
+
+
 
   <div id="subheader">
     <div class="cart">
@@ -27,9 +68,24 @@
       {% endif %}
       {%endwith %}
   </div>
-  <div id="content">
+
+
     {% block content %}
+
+
+    <!-- Page Content LIST.HTML-->
+
+
+    <!--  LIST.HTML-->
+
     {% endblock %}
+
+
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
   </div>
+  <!-- /.container -->
+</footer>
 </body>
 </html>

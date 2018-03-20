@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'orders',
     'paypal.standard.ipn',
     'payment',
+    'bootstrap4',
 
 
 )
@@ -108,6 +109,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+BOOTSTRAP3 = {
+    'jquery_url': STATIC_URL + 'js/jquery.min.js',
+    'css_url': STATIC_URL + 'css/bootstrap.min.css',
+    'javascript_url': STATIC_URL + 'js/bootstrap.min.js',
+}
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
