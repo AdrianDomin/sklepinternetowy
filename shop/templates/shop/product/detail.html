@@ -1,3 +1,4 @@
+
 {% extends "shop/base.html" %}
 {% load i18n %}
 {% load static %}
@@ -8,17 +9,35 @@
 
 {% block content %}
 
-<div class="product-detail">
-  <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-  <h1>{{ product.name }}</h1>
-  <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-  <p class="price">{{ product.price }} zł</p>
-  {{ product.description|linebreaks }}
-  <form action="{% url "cart:cart_add" product.id %}" method="post">
-  {{ cart_product_form }}
-  {% csrf_token %}
-  <input type="submit" value="{% trans "Dodaj do koszyka" %}">
-</form>
-</div>
+
+<!-- Page Content -->
+<div class="container">
+
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <img class="img-fluid" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="">
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="my-3">{{ product.name }}</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.Product destription : {{ product.description|linebreaks }}</p>
+      <p>{{ product.price }} zł</p>
+      <h3 class="my-3"><a href="{{ product.category.get_absolute_url }}"> {{ product.category }}</h3>
+
+        <form action="{% url "cart:cart_add" product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="{% trans "Dodaj do koszyka" %}">
+      </form>
+
+    </div>
+
+  </div>
+<!-- /.row -->
+
+
 
 {% endblock %}

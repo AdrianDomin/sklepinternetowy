@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+  {% if category %}{{ category.name }}{% else %}Produkty{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Content -->
+<div class="container">
+
+<div class="row">
+
+  <div class="col-lg-3">
+
+    <h1 class="my-4">Kategorie</h1>
+    <div class="list-group">
+      <a class="list-group-item" href="{% url "shop:product_list" %}">Wszystkie</a>
+      {% for c in categories %}
+      <a class="list-group-item" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="row">
+
+  {% for product in products %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+          </h4>
+          <h5>{{ product.price }} zł</h5>
+          <p class="card-text">{{ product.name }}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+      </div>
+</div>
+{% endfor %}
+
+
+  </div>
+  </div>
+  </div>
+{% endblock %}
