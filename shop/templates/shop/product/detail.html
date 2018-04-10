@@ -22,12 +22,16 @@
     </div>
 
     <div class="col-md-4">
+      <h3 class="my-3"><a href="{{ product.category.get_absolute_url }}"> {{ product.category }}</a></h3>
       <h3 class="my-3">{{ product.name }}</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.Product destription : {{ product.description|linebreaks }}</p>
+      <p>Product destription : {{ product.description|linebreaks }}</p>
       <p>{{ product.price }} zł</p>
-      <h3 class="my-3"><a href="{{ product.category.get_absolute_url }}"> {{ product.category }}</h3>
+      <p>{{ item.quantity }}</p>
+<!--
 
+-->
         <form action="{% url "cart:cart_add" product.id %}" method="post">
+
         {{ cart_product_form }}
         {% csrf_token %}
         <input type="submit" value="{% trans "Dodaj do koszyka" %}">
